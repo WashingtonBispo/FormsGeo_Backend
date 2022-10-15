@@ -10,15 +10,9 @@ namespace FormsGeo.Service.User.Response
     public class UserPostResponse
     {
         /// <summary>
-        /// Name of user
+        /// Id of user
         /// </summary>
         [Required]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Email of user
-        /// </summary>
-        [Required]
-        public string Email { get; set; }
+        public Guid Id { get; set; }
     }
 }

@@ -24,11 +24,10 @@ namespace FormsGeo.Service.User.Handle
         {
             var userToPost = new UserEntity { Email = _userPostRequest.Email, Name = _userPostRequest.Name, Password = _userPostRequest.Password };
 
-            var teste = await _context.AddAsync(userToPost);
-
+            await _context.AddAsync(userToPost);
             _context.SaveChanges();
 
-            return new UserPostResponse { Email = _userPostRequest.Email, Name = _userPostRequest.Name };
+            return new UserPostResponse { Id = userToPost.Id };
         }
     }
 }

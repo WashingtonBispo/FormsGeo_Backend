@@ -13,6 +13,11 @@ builder.Services.AddDbContext<DataContext>(
     o => o.UseNpgsql(builder.Configuration.GetConnectionString("FormsGeoDB"))
     );
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+//services cors
+builder.Services.AddCors(p => p.AddPolicy("corsapp", builder =>
+{
+    builder.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
+}));
 
 var app = builder.Build();
 
@@ -20,6 +25,7 @@ var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI();
 
+app.UseCors("corsapp");
 
 app.UseHttpsRedirection();
 
