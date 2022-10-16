@@ -13,17 +13,19 @@ namespace FormsGeo.Application.Controllers
     public class UserController : ControllerBase
     {
         private readonly DataContext _context;
+        private readonly IConfiguration _configuration;
 
-        public UserController(DataContext context)
+        public UserController(DataContext context, IConfiguration configuration)
         {
             _context = context;
+            _configuration = configuration;
         }
 
         // POST api/<UserController>
         [HttpPost]
         public async Task<UserPostResponse> Post([FromBody] UserPostRequest request)
         {
-            var userPostHande = new UserPostHandle(request, _context);
+            var userPostHande = new UserPostHandle(request, _context, _configuration);
             return await userPostHande.Handle();
         }
     }

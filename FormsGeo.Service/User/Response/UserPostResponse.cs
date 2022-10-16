@@ -14,5 +14,11 @@ namespace FormsGeo.Service.User.Response
         /// </summary>
         [Required]
         public Guid Id { get; set; }
+
+        /// <summary>
+        /// auth token
+        /// </summary>
+        [Required]
+        public string JWT { get; set; }
     }
 }
