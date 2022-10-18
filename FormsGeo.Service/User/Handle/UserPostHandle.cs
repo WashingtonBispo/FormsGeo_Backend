@@ -1,5 +1,6 @@
 ﻿using FormsGeo.Data.Context;
 using FormsGeo.Domain.Entities;
+using FormsGeo.Domain.Enums;
 using FormsGeo.Service.Commom.Auth;
 using FormsGeo.Service.User.Request;
 using FormsGeo.Service.User.Response;
@@ -28,13 +29,15 @@ namespace FormsGeo.Service.User.Handle
         public async Task<UserPostResponse> Handle()
         {
             var user = new UserEntity { Email = _userPostRequest.Email, Name = _userPostRequest.Name, Password = _userPostRequest.Password };
+            user.Status = EnUserStatus.Ativo;
+            user.isAdmin = false;
 
             await _context.AddAsync(user);
             _context.SaveChanges();
 
             var JWT = AuthUtils.GenerateJWTToUser(user, _configuration);
 
-            return new UserPostResponse { Id = user.Id, JWT = JWT };
+            return new UserPostResponse { JWT = JWT };
         }
     }
 }

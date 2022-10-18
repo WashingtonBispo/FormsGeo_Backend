@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FormsGeo.Domain.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -9,12 +10,10 @@ namespace FormsGeo.Domain.Entities
 {
     public class UserEntity
     {
-        public Guid Id { get; set; }
-        [Required]
-        public string Name { get; set; }
-        [Required]
         public string Email { get; set; }
-        [Required]
+        public string Name { get; set; }
         public string Password { get; set; }
+        public EnUserStatus Status { get; set; }
+        public bool isAdmin { get; set; }
     }
 }

@@ -22,7 +22,8 @@ namespace FormsGeo.Service.Commom.Auth
             {
                 new Claim(ClaimTypes.Name, user.Name),
                 new Claim(ClaimTypes.Email, user.Email),
-                new Claim("Id", user.Id.ToString())
+                new Claim(ClaimTypes.Role, user.isAdmin ? "Admin" : "Researcher"),
+                new Claim("status", user.Status.ToString())
             });
 
             var key = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(

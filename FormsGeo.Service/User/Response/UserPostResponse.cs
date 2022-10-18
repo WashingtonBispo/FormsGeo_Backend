@@ -10,12 +10,6 @@ namespace FormsGeo.Service.User.Response
     public class UserPostResponse
     {
         /// <summary>
-        /// Id of user
-        /// </summary>
-        [Required]
-        public Guid Id { get; set; }
-
-        /// <summary>
         /// auth token
         /// </summary>
         [Required]
