@@ -34,7 +34,7 @@ namespace FormsGeo.Application.Controllers
         // Get api/<UserController>
         [HttpGet]
         [AllowAnonymous]
-        public async Task<UserResponse> Get([FromBody] UserGetRequest request)
+        public async Task<UserResponse> Get([FromQuery] UserGetRequest request)
         {
             var userGetHandle = new UserGetHandle(request, _context, _configuration);
             return await userGetHandle.Handle();

@@ -37,6 +37,9 @@ namespace FormsGeo.Service.User.Handle
 
             var user = _context.User.Where(u => u.Email == _userGetRequest.Email && u.Password == password).FirstOrDefault();
 
+            if (user == null)
+                return null;
+
             var JWT = AuthUtils.GenerateJWTToUser(user, _configuration);
 
             return new UserResponse { JWT = JWT };

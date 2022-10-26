@@ -14,14 +14,14 @@ namespace FormsGeo.Service.User.Request
         /// Email of user
         /// </summary>
         [Required]
-        [FromBody]
+        [FromQuery]
         public string Email { get; set; }
 
         /// <summary>
         /// Password of user
         /// </summary>
         [Required]
-        [FromBody]
+        [FromQuery]
         public string Password { get; set; }
     }
 }
