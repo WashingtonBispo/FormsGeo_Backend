@@ -25,10 +25,19 @@ namespace FormsGeo.Application.Controllers
         // POST api/<UserController>
         [HttpPost]
         [AllowAnonymous]
-        public async Task<UserPostResponse> Post([FromBody] UserPostRequest request)
+        public async Task<UserResponse> Post([FromBody] UserPostRequest request)
         {
-            var userPostHande = new UserPostHandle(request, _context, _configuration);
-            return await userPostHande.Handle();
+            var userPostHandle = new UserPostHandle(request, _context, _configuration);
+            return await userPostHandle.Handle();
+        }
+
+        // Get api/<UserController>
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<UserResponse> Get([FromBody] UserGetRequest request)
+        {
+            var userGetHandle = new UserGetHandle(request, _context, _configuration);
+            return await userGetHandle.Handle();
         }
     }
 }
