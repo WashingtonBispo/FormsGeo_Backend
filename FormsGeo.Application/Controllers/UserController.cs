@@ -39,5 +39,13 @@ namespace FormsGeo.Application.Controllers
             var userGetHandle = new UserGetHandle(request, _context, _configuration);
             return await userGetHandle.Handle();
         }
+
+        [HttpGet("List")]
+        [AllowAnonymous]
+        public async Task<List<ListUserResponse>> Get([FromQuery] ListUserGetRequest request)
+        {
+            var userGetHandle = new ListUserGetHandle(request, _context, _configuration);
+            return await userGetHandle.Handle();
+        }
     }
 }
