@@ -15,31 +15,30 @@ using System.Threading.Tasks;
 
 namespace FormsGeo.Service.User.Handle
 {
-    public class UserPostHandle
+    public class UserGetHandle
     {
-        UserPostRequest _userPostRequest { get; set; }
+        UserGetRequest _userGetRequest { get; set; }
         private readonly DataContext _context;
         private readonly IConfiguration _configuration;
-        
-        public UserPostHandle(UserPostRequest request, DataContext context, IConfiguration configuration)
+        private string regexEmail = @"^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$";
+
+        public UserGetHandle(UserGetRequest request, DataContext context, IConfiguration configuration)
         {
-            _userPostRequest = request;
+            _userGetRequest = request;
             _context = context;
             _configuration = configuration;
         }
 
         public async Task<UserResponse> Handle()
         {
-            AuthUtils.ValidateUserInfor(_userPostRequest.Email, _userPostRequest.Password);
+            AuthUtils.ValidateUserInfor(_userGetRequest.Email, _userGetRequest.Password);
 
-            var password = AuthUtils.PasswordCrypt(_userPostRequest.Password);
+            var password = AuthUtils.PasswordCrypt(_userGetRequest.Password);
 
-            var user = new UserEntity { Email = _userPostRequest.Email, Name = _userPostRequest.Name, Password = password };
-            user.Status = EnUserStatus.Ativo;
-            user.isAdmin = false;
+            var user = _context.User.Where(u => u.Email == _userGetRequest.Email && u.Password == password).FirstOrDefault();
 
-            await _context.AddAsync(user);
-            _context.SaveChanges();
+            if (user == null)
+                return null;
 
             var JWT = AuthUtils.GenerateJWTToUser(user, _configuration);
 

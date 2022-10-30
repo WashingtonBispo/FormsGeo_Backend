@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FormsGeo.Service.User.Response
 {
-    public class UserPostResponse
+    public class UserResponse
     {
         /// <summary>
         /// auth token
