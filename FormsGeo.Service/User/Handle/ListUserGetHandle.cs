@@ -21,6 +21,9 @@ namespace FormsGeo.Service.User.Handle
             _userGetRequest = request;
             _context = context;
             _configuration = configuration;
+
+            if(!string.IsNullOrEmpty(_userGetRequest.filter))
+                _userGetRequest.filter = _userGetRequest.filter.ToLower();
         }
 
         public async Task<List<ListUserResponse>> Handle()
@@ -29,7 +32,7 @@ namespace FormsGeo.Service.User.Handle
             if (string.IsNullOrEmpty(_userGetRequest.filter))
                 userList = _context.User.ToList();
             else
-                userList = _context.User.Where(user => (user.Email.Contains(_userGetRequest.filter) || user.Name.Contains(_userGetRequest.filter)) && user.isAdmin==false).ToList();
+                userList = _context.User.Where(user => (user.Email.ToLower().Contains(_userGetRequest.filter) || user.Name.ToLower().Contains(_userGetRequest.filter)) && user.isAdmin==false).ToList();
 
             var convertedList = userList.Select(x => new ListUserResponse(x)).ToList();
             return convertedList;

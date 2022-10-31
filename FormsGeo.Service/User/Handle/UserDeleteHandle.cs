@@ -12,22 +12,24 @@ namespace FormsGeo.Service.User.Handle
 {
     public class UserDeleteHandle
     {
-        UserDeleteRequest _userGetRequest { get; set; }
+        UserDeleteRequest _userDeleteRequest { get; set; }
         private readonly DataContext _context;
         private readonly IConfiguration _configuration;
 
         public UserDeleteHandle(UserDeleteRequest request, DataContext context, IConfiguration configuration)
         {
-            _userGetRequest = request;
+            _userDeleteRequest = request;
             _context = context;
             _configuration = configuration;
+
+            _userDeleteRequest.Email = _userDeleteRequest.Email.ToLower();
         }
 
         public async Task<ActionResult> Handle()
         {
             try
             {
-                UserEntity user = _context.User.FirstOrDefault(x => x.Email == _userGetRequest.Email);
+                UserEntity user = _context.User.FirstOrDefault(x => x.Email.ToLower() == _userDeleteRequest.Email) ;
 
                 if(user != null)
                 {

@@ -55,5 +55,13 @@ namespace FormsGeo.Application.Controllers
             var userDeleteHandle = new UserDeleteHandle(request, _context, _configuration);
             return await userDeleteHandle.Handle();
         }
+
+        [HttpPut]
+        [AllowAnonymous]
+        public async Task<UserResponse> Put([FromBody] EditUserPutRequest request)
+        {
+            var editUserHandle = new EditUserPutHandle(request, _context, _configuration);
+            return await editUserHandle.Handle();
+        }
     }
 }
