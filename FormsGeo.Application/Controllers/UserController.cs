@@ -71,5 +71,13 @@ namespace FormsGeo.Application.Controllers
             var newPasswordHandle = new NewPasswordPutHandle(request, _context, _configuration);
             return await newPasswordHandle.Handle();
         }
+
+        [HttpPut("status")]
+        [AllowAnonymous]
+        public async Task<IActionResult> Put([FromBody] ChangeStatusPutRequest request)
+        {
+            var changeStatusHandle = new ChangeStatusPutHandle(request, _context, _configuration);
+            return await changeStatusHandle.Handle();
+        }
     }
 }
