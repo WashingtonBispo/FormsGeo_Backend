@@ -39,5 +39,45 @@ namespace FormsGeo.Application.Controllers
             var userGetHandle = new UserGetHandle(request, _context, _configuration);
             return await userGetHandle.Handle();
         }
+
+        [HttpGet("List")]
+        [AllowAnonymous]
+        public async Task<List<ListUserResponse>> Get([FromQuery] ListUserGetRequest request)
+        {
+            var userGetHandle = new ListUserGetHandle(request, _context, _configuration);
+            return await userGetHandle.Handle();
+        }
+
+        [HttpDelete]
+        [AllowAnonymous]
+        public async Task<ActionResult> Delete([FromBody] UserDeleteRequest request)
+        {
+            var userDeleteHandle = new UserDeleteHandle(request, _context, _configuration);
+            return await userDeleteHandle.Handle();
+        }
+
+        [HttpPut]
+        [AllowAnonymous]
+        public async Task<UserResponse> Put([FromBody] EditUserPutRequest request)
+        {
+            var editUserHandle = new EditUserPutHandle(request, _context, _configuration);
+            return await editUserHandle.Handle();
+        }
+
+        [HttpPut("password")]
+        [AllowAnonymous]
+        public async Task<UserResponse> Put([FromBody] NewPasswordPutRequest request)
+        {
+            var newPasswordHandle = new NewPasswordPutHandle(request, _context, _configuration);
+            return await newPasswordHandle.Handle();
+        }
+
+        [HttpPut("status")]
+        [AllowAnonymous]
+        public async Task<IActionResult> Put([FromBody] ChangeStatusPutRequest request)
+        {
+            var changeStatusHandle = new ChangeStatusPutHandle(request, _context, _configuration);
+            return await changeStatusHandle.Handle();
+        }
     }
 }
