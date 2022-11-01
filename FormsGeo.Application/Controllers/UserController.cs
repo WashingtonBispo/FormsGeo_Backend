@@ -63,5 +63,13 @@ namespace FormsGeo.Application.Controllers
             var editUserHandle = new EditUserPutHandle(request, _context, _configuration);
             return await editUserHandle.Handle();
         }
+
+        [HttpPut("password")]
+        [AllowAnonymous]
+        public async Task<UserResponse> Put([FromBody] NewPasswordPutRequest request)
+        {
+            var newPasswordHandle = new NewPasswordPutHandle(request, _context, _configuration);
+            return await newPasswordHandle.Handle();
+        }
     }
 }
