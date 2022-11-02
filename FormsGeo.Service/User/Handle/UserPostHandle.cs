@@ -34,7 +34,7 @@ namespace FormsGeo.Service.User.Handle
 
             var password = AuthUtils.PasswordCrypt(_userPostRequest.Password);
 
-            var user = new UserEntity { Email = _userPostRequest.Email, Name = _userPostRequest.Name, Password = password };
+            var user = new UserEntity { Email = _userPostRequest.Email.ToLower(), Name = _userPostRequest.Name.ToLower(), Password = password };
             user.Status = EnUserStatus.Ativo;
             user.isAdmin = false;
 

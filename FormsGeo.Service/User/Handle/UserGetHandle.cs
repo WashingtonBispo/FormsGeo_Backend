@@ -1,17 +1,9 @@
 ﻿using FormsGeo.Data.Context;
-using FormsGeo.Domain.Entities;
-using FormsGeo.Domain.Enums;
 using FormsGeo.Service.Commom.Auth;
 using FormsGeo.Service.User.Request;
 using FormsGeo.Service.User.Response;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+
 
 namespace FormsGeo.Service.User.Handle
 {
@@ -33,9 +25,15 @@ namespace FormsGeo.Service.User.Handle
         {
             AuthUtils.ValidateUserInfor(_userGetRequest.Email, _userGetRequest.Password);
 
+            if (_userGetRequest.Password.Length < 8)
+                return null;
+
             var password = AuthUtils.PasswordCrypt(_userGetRequest.Password);
 
             var user = _context.User.Where(u => u.Email == _userGetRequest.Email && u.Password == password).FirstOrDefault();
+
+            if (user == null)
+                return null;
 
             var JWT = AuthUtils.GenerateJWTToUser(user, _configuration);
 
