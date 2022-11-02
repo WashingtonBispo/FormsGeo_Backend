@@ -25,6 +25,9 @@ namespace FormsGeo.Service.User.Handle
         {
             AuthUtils.ValidateUserInfor(_userGetRequest.Email, _userGetRequest.Password);
 
+            if (_userGetRequest.Password.Length < 8)
+                return null;
+
             var password = AuthUtils.PasswordCrypt(_userGetRequest.Password);
 
             var user = _context.User.Where(u => u.Email == _userGetRequest.Email && u.Password == password).FirstOrDefault();

@@ -36,7 +36,7 @@ namespace FormsGeo.Service.User.Handle
 
                 if (AuthUtils.PasswordCrypt(_userPutRequest.oldPassword) == user.Password)
                 {
-                    user.Password = _userPutRequest.newPassword;
+                    user.Password = AuthUtils.PasswordCrypt(_userPutRequest.newPassword);
 
                     _context.User.Update(user);
                     await _context.SaveChangesAsync();
