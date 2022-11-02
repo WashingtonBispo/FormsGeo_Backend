@@ -33,7 +33,7 @@ namespace FormsGeo.Service.User.Handle
 
                 if (user == null) return new StatusCodeResult(404);
 
-                user.Status =  (EnUserStatus)_userPutRequest.Status;
+                user.Status = _userPutRequest.Status;
 
                 _context.User.Update(user);
                 await _context.SaveChangesAsync();

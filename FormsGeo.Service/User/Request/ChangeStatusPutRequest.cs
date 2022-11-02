@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FormsGeo.Domain.Enums;
+using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 
 namespace FormsGeo.Service.User.Request
@@ -11,6 +12,6 @@ namespace FormsGeo.Service.User.Request
 
         [Required]
         [FromBody]
-        public int Status { get; set; }
+        public EnUserStatus Status { get; set; }
     }
 }
