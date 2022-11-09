@@ -1,12 +1,11 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
 namespace FormsGeo.Data.Migrations
 {
-    public partial class FormMigration : Migration
+    public partial class AddFormTable : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,16 +13,15 @@ namespace FormsGeo.Data.Migrations
                 name: "Form",
                 columns: table => new
                 {
-                    idForm = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    idForm = table.Column<string>(type: "text", nullable: false),
                     questions = table.Column<string>(type: "text", nullable: false),
                     name = table.Column<string>(type: "text", nullable: false),
                     linkConsent = table.Column<string>(type: "text", nullable: false),
                     description = table.Column<string>(type: "text", nullable: false),
                     finalMessage = table.Column<string>(type: "text", nullable: false),
                     createdAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    updatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    deletedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    updatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    deletedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     gatherEnd = table.Column<bool>(type: "boolean", nullable: false),
                     gatherPassage = table.Column<bool>(type: "boolean", nullable: false),
                     icon = table.Column<string>(type: "text", nullable: false),
@@ -38,7 +36,7 @@ namespace FormsGeo.Data.Migrations
                 name: "FormEntityUserEntity",
                 columns: table => new
                 {
-                    FormsidForm = table.Column<int>(type: "integer", nullable: false),
+                    FormsidForm = table.Column<string>(type: "text", nullable: false),
                     UsersEmail = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>

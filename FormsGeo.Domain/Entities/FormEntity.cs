@@ -4,7 +4,7 @@ namespace FormsGeo.Domain.Entities
 {
     public class FormEntity
     {
-        public int idForm { get; set; }
+        public string idForm { get; set; }
         public string questions { get; set; }
         public string name { get; set; }
         public string linkConsent { get; set; }

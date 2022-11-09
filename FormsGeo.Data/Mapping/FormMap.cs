@@ -26,8 +26,8 @@ namespace FormsGeo.Data.Mapping
             builder.Property(e => e.finalMessage).IsRequired();
             builder.Property(e => e.createdAt).IsRequired();
 
-            builder.Property(e => e.updatedAt).IsRequired();
-            builder.Property(e => e.deletedAt).IsRequired();
+            builder.Property(e => e.updatedAt).IsRequired(false);
+            builder.Property(e => e.deletedAt).IsRequired(false);
 
             builder.Property(e => e.gatherEnd).IsRequired();
             builder.Property(e => e.gatherPassage).IsRequired();

@@ -24,8 +24,8 @@ namespace FormsGeo.Data.Migrations
 
             modelBuilder.Entity("FormEntityUserEntity", b =>
                 {
-                    b.Property<int>("FormsidForm")
-                        .HasColumnType("integer");
+                    b.Property<string>("FormsidForm")
+                        .HasColumnType("text");
 
                     b.Property<string>("UsersEmail")
                         .HasColumnType("text");
@@ -39,17 +39,13 @@ namespace FormsGeo.Data.Migrations
 
             modelBuilder.Entity("FormsGeo.Domain.Entities.FormEntity", b =>
                 {
-                    b.Property<int>("idForm")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("idForm"));
+                    b.Property<string>("idForm")
+                        .HasColumnType("text");
 
                     b.Property<DateTime>("createdAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<DateTime?>("deletedAt")
-                        .IsRequired()
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("description")
@@ -86,7 +82,6 @@ namespace FormsGeo.Data.Migrations
                         .HasColumnType("integer");
 
                     b.Property<DateTime?>("updatedAt")
-                        .IsRequired()
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("idForm");
