@@ -23,10 +23,20 @@ namespace FormsGeo.Service.Form.Handle
 
         public async Task<FormPostResponse> Handle()
         {
-            var formId = Guid.NewGuid().ToString().Substring(0,8).ToUpper();
-            var Form = new FormEntity { idForm = formId, name = _FormPostRequest.name.ToLower(), description=_FormPostRequest.description, questions = "", linkConsent = _FormPostRequest.linkConsent, 
-                finalMessage = _FormPostRequest.finalMessage, createdAt=DateTime.UtcNow, gatherEnd = _FormPostRequest.gatherEnd, gatherPassage = _FormPostRequest.gatherPassage,
-                icon = _FormPostRequest.icon, status = EnFormStatus.Preview
+            var formId = Guid.NewGuid().ToString().Substring(0, 8).ToUpper();
+            var Form = new FormEntity
+            {
+                idForm = formId,
+                name = _FormPostRequest.name.ToLower(),
+                description = _FormPostRequest.description,
+                questions = "",
+                linkConsent = _FormPostRequest.linkConsent,
+                finalMessage = _FormPostRequest.finalMessage,
+                createdAt = DateTime.UtcNow,
+                gatherEnd = _FormPostRequest.gatherEnd,
+                gatherPassage = _FormPostRequest.gatherPassage,
+                icon = _FormPostRequest.icon,
+                status = EnFormStatus.Preview
             };
 
             Form.Users = new List<UserEntity>();

@@ -30,5 +30,13 @@ namespace FormsGeo.Application.Controllers
             return await FormPostHandle.Handle();
         }
 
+        [HttpPut("status")]
+        [AllowAnonymous]
+        public async Task<IActionResult> Put([FromBody] FormChangeStatusPutRequest request)
+        {
+            var FormPutHandle = new FormChangeStatusPutHandle(request, _context, _configuration);
+            return await FormPutHandle.Handle();
+        }
+
     }
 }
