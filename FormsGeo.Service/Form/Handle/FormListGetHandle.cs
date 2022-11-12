@@ -16,8 +16,9 @@ namespace FormsGeo.Service.Form.Handle
             _FormGetRequest = request;
             _context = context;
             _configuration = configuration;
-
-            _FormGetRequest.email = _FormGetRequest.email.ToLower();
+            
+            if(!string.IsNullOrEmpty(_FormGetRequest.email))
+                _FormGetRequest.email = _FormGetRequest.email.ToLower();
         }
 
         public async Task<List<FormGetResponse>> Handle()
