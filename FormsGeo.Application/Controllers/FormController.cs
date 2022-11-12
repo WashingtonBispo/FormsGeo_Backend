@@ -30,6 +30,22 @@ namespace FormsGeo.Application.Controllers
             return await FormPostHandle.Handle();
         }
 
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<FormGetResponse> get([FromQuery] FormIdGetRequest request)
+        {
+            var FormGetHandle = new FormIdGetHandle(request, _context, _configuration);
+            return await FormGetHandle.Handle();
+        }
+
+        [HttpGet("List")]
+        [AllowAnonymous]
+        public async Task<List<FormGetResponse>> get([FromQuery] FormListGetRequest request)
+        {
+            var FormGetHandle = new FormListGetHandle(request, _context, _configuration);
+            return await FormGetHandle.Handle();
+        }
+
         [HttpPut]
         [AllowAnonymous]
         public async Task<IActionResult> Put([FromBody] FormEditPutRequest request)
