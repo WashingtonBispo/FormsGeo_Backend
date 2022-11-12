@@ -15,5 +15,7 @@ namespace FormsGeo.Domain.Entities
         public string Password { get; set; }
         public EnUserStatus Status { get; set; }
         public bool isAdmin { get; set; }
+
+        public ICollection<FormEntity>  Forms { get; set; }
     }
 }

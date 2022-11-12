@@ -22,7 +22,8 @@ namespace FormsGeo.Service.User.Handle
             _context = context;
             _configuration = configuration;
 
-            _userPutRequest.Email = _userPutRequest.Email.ToLower();
+            if (!string.IsNullOrEmpty(_userPutRequest.Email))
+                _userPutRequest.Email = _userPutRequest.Email.ToLower();
         }
 
         public async Task<UserResponse> Handle()

@@ -2,16 +2,16 @@
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 
-namespace FormsGeo.Service.User.Request
+namespace FormsGeo.Service.Form.Request
 {
-    public class ChangeStatusPutRequest
+    public class FormChangeStatusPutRequest
     {
         [Required]
         [FromBody]
-        public string Email { get; set; }
+        public string formId { get; set; }
 
         [Required]
         [FromBody]
-        public EnUserStatus Status { get; set; }
+        public EnFormStatus status { get; set;}
     }
 }
