@@ -8,5 +8,8 @@ namespace FormsGeo.Service.Form.Request
     {
         [FromQuery]
         public string? email { get; set; }
+
+        [FromQuery]
+        public string? filter { get; set; }
     }
 }
