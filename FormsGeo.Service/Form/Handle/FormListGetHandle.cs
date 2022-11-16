@@ -19,22 +19,28 @@ namespace FormsGeo.Service.Form.Handle
             
             if(!string.IsNullOrEmpty(_FormGetRequest.email))
                 _FormGetRequest.email = _FormGetRequest.email.ToLower();
+
+            if (!string.IsNullOrEmpty(_FormGetRequest.filter))
+                _FormGetRequest.filter = _FormGetRequest.filter.ToLower();
         }
 
         public async Task<List<FormGetResponse>> Handle()
         {
             try
             {
-
+                List<FormGetResponse> forms;
+                IQueryable<FormEntity> formsDB;
                 if (!string.IsNullOrEmpty(_FormGetRequest.email))
-                {
-                    var Forms = _context.User.Where(x => x.Email ==_FormGetRequest.email).SelectMany(x => x.Forms).ToList();
-
-                    return Forms.Select(x => new FormGetResponse(x)).ToList();
-
-                }
+                    formsDB = _context.User.Where(x => x.Email == _FormGetRequest.email).SelectMany(x => x.Forms);
                 else
-                    return _context.Form.Select(x => new FormGetResponse(x)).ToList();
+                    formsDB = _context.Form.AsQueryable();
+
+                if (!string.IsNullOrEmpty(_FormGetRequest.filter))
+                    formsDB = formsDB.Where(x => x.name.ToLower().Contains(_FormGetRequest.filter));
+                        
+                forms = formsDB.Select(x => new FormGetResponse(x)).ToList();
+
+                return forms;
             }
             catch (Exception ex)
             {
