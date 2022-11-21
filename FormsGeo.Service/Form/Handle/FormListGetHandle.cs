@@ -3,6 +3,7 @@ using FormsGeo.Domain.Entities;
 using FormsGeo.Service.Form.Request;
 using FormsGeo.Service.Form.Response;
 using Microsoft.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore;
 
 namespace FormsGeo.Service.Form.Handle
 {
@@ -30,13 +31,14 @@ namespace FormsGeo.Service.Form.Handle
             {
                 List<FormGetResponse> forms;
                 IQueryable<FormEntity> formsDB;
+
                 if (!string.IsNullOrEmpty(_FormGetRequest.email))
-                    formsDB = _context.User.Where(x => x.Email == _FormGetRequest.email).SelectMany(x => x.Forms);
+                    formsDB = _context.Form.Include(f => f.Users).Where(x => x.Users.Where(x => x.Email == _FormGetRequest.email).Any());
                 else
-                    formsDB = _context.Form.AsQueryable();
+                    formsDB = _context.Form.Include(f => f.Users).AsQueryable();
 
                 if (!string.IsNullOrEmpty(_FormGetRequest.filter))
-                    formsDB = formsDB.Where(x => x.name.ToLower().Contains(_FormGetRequest.filter));
+                    formsDB = formsDB.Where(x => x.name.ToLower().Contains(_FormGetRequest.filter) || x.Users.FirstOrDefault(u => u.Email.Contains(_FormGetRequest.filter)) != null);
                         
                 forms = formsDB.Select(x => new FormGetResponse(x)).ToList();
 
