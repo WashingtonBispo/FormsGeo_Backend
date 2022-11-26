@@ -30,6 +30,14 @@ namespace FormsGeo.Application.Controllers
             return await FormPostHandle.Handle();
         }
 
+        [HttpPost("Duplicate")]
+        [AllowAnonymous]
+        public async Task<FormPostResponse> Post([FromBody] FormDuplicatePostRequest request)
+        {
+            var FormPostHandle = new FormDuplicatePostHandle(request, _context, _configuration);
+            return await FormPostHandle.Handle();
+        }
+
         [HttpGet]
         [AllowAnonymous]
         public async Task<FormGetResponse> get([FromQuery] FormIdGetRequest request)
