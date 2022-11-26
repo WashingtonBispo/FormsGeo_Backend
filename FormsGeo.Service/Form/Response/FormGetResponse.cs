@@ -10,19 +10,21 @@ namespace FormsGeo.Service.Form.Response
 {
     public class FormGetResponse
     {
-        public FormGetResponse(FormEntity user)
+        public FormGetResponse(FormEntity form)
         {
-            idForm = user.idForm;
-            questions = user.questions;
-            name = user.name;
-            linkConsent = user.linkConsent;
-            description = user.description;
-            finalMessage = user.finalMessage;
-            createdAt = user.createdAt;
-            gatherEnd = user.gatherEnd;
-            gatherPassage = user.gatherPassage;
-            icon = user.icon;
-            status = user.status;
+            idForm = form.idForm;
+            questions = form.questions;
+            name = form.name;
+            linkConsent = form.linkConsent;
+            description = form.description;
+            finalMessage = form.finalMessage;
+            createdAt = form.createdAt;
+            gatherEnd = form.gatherEnd;
+            gatherPassage = form.gatherPassage;
+            icon = form.icon;
+            status = form.status;
+
+            author = form.Users.FirstOrDefault().Email;
         }
 
         public string idForm { get; set; }
@@ -35,6 +37,7 @@ namespace FormsGeo.Service.Form.Response
         public bool gatherEnd { get; set; }
         public bool gatherPassage { get; set; }
         public string icon { get; set; }
+        public string author { get; set; }
         public EnFormStatus status { get; set; }
 
     }

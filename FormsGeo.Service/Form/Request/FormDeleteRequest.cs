@@ -7,7 +7,7 @@ namespace FormsGeo.Service.Form.Request
     public class FormDeleteRequest
     {
         [Required]
-        [FromBody]
+        [FromQuery]
         public string formId { get; set; }
     }
 }

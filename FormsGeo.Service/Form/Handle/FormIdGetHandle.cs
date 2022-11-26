@@ -3,6 +3,8 @@ using FormsGeo.Domain.Entities;
 using FormsGeo.Service.Form.Request;
 using FormsGeo.Service.Form.Response;
 using Microsoft.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace FormsGeo.Service.Form.Handle
 {
@@ -23,7 +25,7 @@ namespace FormsGeo.Service.Form.Handle
         {
             try
             {
-               FormEntity form = _context.Form.FirstOrDefault(x => x.idForm == _FormGetRequest.formId);
+               FormEntity form = _context.Form.Include(f => f.Users).FirstOrDefault(x => x.idForm == _FormGetRequest.formId);
 
                return new FormGetResponse(form);
             }

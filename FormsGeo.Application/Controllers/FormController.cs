@@ -56,7 +56,7 @@ namespace FormsGeo.Application.Controllers
 
         [HttpDelete]
         [AllowAnonymous]
-        public async Task<IActionResult> Put([FromBody] FormDeleteRequest request)
+        public async Task<IActionResult> Delete([FromQuery] FormDeleteRequest request)
         {
             var FormDeleteHandle = new FormDeleteHandle(request, _context, _configuration);
             return await FormDeleteHandle.Handle();
