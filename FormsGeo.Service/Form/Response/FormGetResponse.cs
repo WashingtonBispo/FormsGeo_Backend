@@ -37,7 +37,7 @@ namespace FormsGeo.Service.Form.Response
         public bool gatherEnd { get; set; }
         public bool gatherPassage { get; set; }
         public string icon { get; set; }
-        public string author { get; set; }
+        public string? author { get; set; }
         public EnFormStatus status { get; set; }
 
     }
