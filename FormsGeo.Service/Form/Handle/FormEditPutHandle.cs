@@ -46,6 +46,9 @@ namespace FormsGeo.Service.Form.Handle
                 if (!string.IsNullOrEmpty(_FormPutRequest.icon))
                     Form.icon = _FormPutRequest.icon;
 
+                if (_FormPutRequest.numberQuestions != null)
+                    Form.numberQuestions = _FormPutRequest.numberQuestions;
+
                 if (_FormPutRequest.gatherEnd != null)
                     Form.gatherEnd = Convert.ToBoolean(_FormPutRequest.gatherEnd);
 

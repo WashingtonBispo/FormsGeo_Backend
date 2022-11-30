@@ -38,6 +38,7 @@ namespace FormsGeo.Service.Form.Handle
                     description = form.description,
                     questions = form.questions,
                     linkConsent = form.linkConsent,
+                    numberQuestions = form.numberQuestions,
                     finalMessage = form.finalMessage,
                     createdAt = DateTime.UtcNow,
                     gatherEnd = form.gatherEnd,

@@ -20,6 +20,9 @@ namespace FormsGeo.Service.Form.Request
         public string? linkConsent { get; set; }
 
         [FromBody]
+        public int? numberQuestions { get; set; }
+
+        [FromBody]
         public string? description { get; set; }
 
         [FromBody]
