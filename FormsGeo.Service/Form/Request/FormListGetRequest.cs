@@ -11,5 +11,8 @@ namespace FormsGeo.Service.Form.Request
 
         [FromQuery]
         public string? filter { get; set; }
+
+        [FromQuery]
+        public bool archived { get; set; }
     }
 }
