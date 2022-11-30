@@ -74,6 +74,9 @@ namespace FormsGeo.Data.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<int?>("numberQuestions")
+                        .HasColumnType("integer");
+
                     b.Property<string>("questions")
                         .IsRequired()
                         .HasColumnType("text");

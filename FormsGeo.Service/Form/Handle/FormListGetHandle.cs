@@ -45,6 +45,8 @@ namespace FormsGeo.Service.Form.Handle
                 if (!string.IsNullOrEmpty(_FormGetRequest.filter))
                     formsDB = formsDB.Where(x => x.name.ToLower().Contains(_FormGetRequest.filter) || x.Users.FirstOrDefault(u => u.Email.Contains(_FormGetRequest.filter)) != null);
 
+                formsDB = formsDB.OrderBy(f => f.name);
+
                 forms = formsDB.Select(x => new FormGetResponse(x)).ToList();
 
                 return forms;
