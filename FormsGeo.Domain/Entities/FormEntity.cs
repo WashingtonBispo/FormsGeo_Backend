@@ -20,5 +20,6 @@ namespace FormsGeo.Domain.Entities
         public EnFormStatus status { get; set; }
 
         public ICollection<UserEntity> Users { get; set; }
+        public ICollection<AnswerEntity> Answers { get; set; }
     }
 }

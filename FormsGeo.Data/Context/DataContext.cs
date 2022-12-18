@@ -20,7 +20,7 @@ namespace FormsGeo.Data.Context
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("Host=ec2-3-220-207-90.compute-1.amazonaws.com;Port=5432;Database=d82240nlscgru8;Username=rvwtmqbdvbibpc;Password=442686063704881238fcc07f075eac7375b89d011505ae8c91f16b6b72509f35");
+            optionsBuilder.UseNpgsql();
 
         }
 
@@ -28,9 +28,11 @@ namespace FormsGeo.Data.Context
         {
             modelBuilder.Entity<UserEntity>(new UserMap().Configure);
             modelBuilder.Entity<FormEntity>(new FormMap().Configure);
+            modelBuilder.Entity<AnswerEntity>(new AnswerMap().Configure);
         }
 
         public DbSet<UserEntity> User { get; set; }
         public DbSet<FormEntity> Form { get; set; }
+        public DbSet<AnswerEntity> Answer { get; set; }
     }
 }

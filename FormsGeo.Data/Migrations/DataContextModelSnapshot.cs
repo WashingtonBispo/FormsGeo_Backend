@@ -37,6 +37,41 @@ namespace FormsGeo.Data.Migrations
                     b.ToTable("FormEntityUserEntity");
                 });
 
+            modelBuilder.Entity("FormsGeo.Domain.Entities.AnswerEntity", b =>
+                {
+                    b.Property<int>("answerId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("answerId"));
+
+                    b.Property<string>("FormidForm")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("answer")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("geolocation")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("idParticipante")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int?>("typeAnswer")
+                        .IsRequired()
+                        .HasColumnType("integer");
+
+                    b.HasKey("answerId");
+
+                    b.HasIndex("FormidForm");
+
+                    b.ToTable("Answer", (string)null);
+                });
+
             modelBuilder.Entity("FormsGeo.Domain.Entities.FormEntity", b =>
                 {
                     b.Property<string>("idForm")
@@ -129,6 +164,22 @@ namespace FormsGeo.Data.Migrations
                         .HasForeignKey("UsersEmail")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("FormsGeo.Domain.Entities.AnswerEntity", b =>
+                {
+                    b.HasOne("FormsGeo.Domain.Entities.FormEntity", "Form")
+                        .WithMany("Answers")
+                        .HasForeignKey("FormidForm")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Form");
+                });
+
+            modelBuilder.Entity("FormsGeo.Domain.Entities.FormEntity", b =>
+                {
+                    b.Navigation("Answers");
                 });
 #pragma warning restore 612, 618
         }
