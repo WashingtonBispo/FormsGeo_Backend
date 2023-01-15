@@ -17,4 +17,8 @@
     <ProjectReference Include="..\FormsGeo.Data\FormsGeo.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Local\Response\" />
+  </ItemGroup>
+
 </Project>

@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FormsGeo.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20221218000930_AddAnswerTable")]
-    partial class AddAnswerTable
+    [Migration("20230110151603_InitprojectMigration")]
+    partial class InitprojectMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -41,25 +41,20 @@ namespace FormsGeo.Data.Migrations
 
             modelBuilder.Entity("FormsGeo.Domain.Entities.AnswerEntity", b =>
                 {
-                    b.Property<int>("answerId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                    b.Property<string>("FormId")
+                        .HasColumnType("text");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("answerId"));
-
-                    b.Property<string>("FormidForm")
-                        .IsRequired()
+                    b.Property<string>("idParticipante")
                         .HasColumnType("text");
 
                     b.Property<string>("answer")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("geolocation")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<int>("answerId")
+                        .HasColumnType("integer");
 
-                    b.Property<string>("idParticipante")
+                    b.Property<string>("geolocation")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -67,9 +62,7 @@ namespace FormsGeo.Data.Migrations
                         .IsRequired()
                         .HasColumnType("integer");
 
-                    b.HasKey("answerId");
-
-                    b.HasIndex("FormidForm");
+                    b.HasKey("FormId", "idParticipante");
 
                     b.ToTable("Answer", (string)null);
                 });
@@ -129,6 +122,31 @@ namespace FormsGeo.Data.Migrations
                     b.ToTable("Form", (string)null);
                 });
 
+            modelBuilder.Entity("FormsGeo.Domain.Entities.LocalEntity", b =>
+                {
+                    b.Property<string>("idLocal")
+                        .HasColumnType("text");
+
+                    b.Property<string>("formidForm")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<decimal>("latitude")
+                        .HasColumnType("numeric");
+
+                    b.Property<decimal>("longitude")
+                        .HasColumnType("numeric");
+
+                    b.Property<int>("radius")
+                        .HasColumnType("integer");
+
+                    b.HasKey("idLocal");
+
+                    b.HasIndex("formidForm");
+
+                    b.ToTable("Local", (string)null);
+                });
+
             modelBuilder.Entity("FormsGeo.Domain.Entities.UserEntity", b =>
                 {
                     b.Property<string>("Email")
@@ -172,16 +190,29 @@ namespace FormsGeo.Data.Migrations
                 {
                     b.HasOne("FormsGeo.Domain.Entities.FormEntity", "Form")
                         .WithMany("Answers")
-                        .HasForeignKey("FormidForm")
+                        .HasForeignKey("FormId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Form");
                 });
 
+            modelBuilder.Entity("FormsGeo.Domain.Entities.LocalEntity", b =>
+                {
+                    b.HasOne("FormsGeo.Domain.Entities.FormEntity", "form")
+                        .WithMany("Locals")
+                        .HasForeignKey("formidForm")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("form");
+                });
+
             modelBuilder.Entity("FormsGeo.Domain.Entities.FormEntity", b =>
                 {
                     b.Navigation("Answers");
+
+                    b.Navigation("Locals");
                 });
 #pragma warning restore 612, 618
         }

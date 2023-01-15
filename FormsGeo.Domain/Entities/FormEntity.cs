@@ -21,5 +21,7 @@ namespace FormsGeo.Domain.Entities
 
         public ICollection<UserEntity> Users { get; set; }
         public ICollection<AnswerEntity> Answers { get; set; }
+
+        public ICollection<LocalEntity> Locals { get; set; }
     }
 }

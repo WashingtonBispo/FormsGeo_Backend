@@ -5,7 +5,7 @@ VisualStudioVersion = 17.3.32819.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Application", "1 - Application", "{48ECFE89-23BC-4FF8-A903-C1A9326BEA3F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormsGeo.Application", "FormsGeo.Application\FormsGeo.Application.csproj", "{D1F13413-0C05-4F62-B932-2B1D6AC47723}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FormsGeo.Application", "FormsGeo.Application\FormsGeo.Application.csproj", "{D1F13413-0C05-4F62-B932-2B1D6AC47723}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Domain", "2 - Domain", "{BB732270-DC41-4500-A8E0-DFFA3984C7DA}"
 EndProject
@@ -15,11 +15,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infra", "4 - Infra", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1 - Data", "4.1 - Data", "{F3201F59-A5A9-40C1-B411-2810E7B524C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormsGeo.Domain", "FormsGeo.Domain\FormsGeo.Domain.csproj", "{A367B67D-1677-4C1B-87E9-348D66DD6127}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FormsGeo.Domain", "FormsGeo.Domain\FormsGeo.Domain.csproj", "{A367B67D-1677-4C1B-87E9-348D66DD6127}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormsGeo.Service", "FormsGeo.Service\FormsGeo.Service.csproj", "{1B2946E2-6583-423A-9A42-EEC16CA53CC4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FormsGeo.Service", "FormsGeo.Service\FormsGeo.Service.csproj", "{1B2946E2-6583-423A-9A42-EEC16CA53CC4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormsGeo.Data", "FormsGeo.Data\FormsGeo.Data.csproj", "{7A62A878-1D16-4B83-B94E-7831B9CE7758}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FormsGeo.Data", "FormsGeo.Data\FormsGeo.Data.csproj", "{7A62A878-1D16-4B83-B94E-7831B9CE7758}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

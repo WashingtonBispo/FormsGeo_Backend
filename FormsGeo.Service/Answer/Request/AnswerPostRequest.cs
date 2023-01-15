@@ -17,6 +17,9 @@ namespace FormsGeo.Service.Answer.Request
         [Required]
         [FromBody]
         public string idParticipante { get; set; }
+        [Required]
+        [FromBody]
+        public string geolocation { get; set; }
 
         [Required]
         [FromBody]

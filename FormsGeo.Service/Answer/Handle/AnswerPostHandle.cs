@@ -25,7 +25,7 @@ namespace FormsGeo.Service.Answer.Handle
                 answer = _AnswerPostRequest.answer,
                 typeAnswer = _AnswerPostRequest.typeAnswer,
                 idParticipante = _AnswerPostRequest.idParticipante,
-                geolocation = ""
+                geolocation = _AnswerPostRequest.geolocation
             };
 
             FormEntity form =  _context.Form.FirstOrDefault(x => x.idForm == _AnswerPostRequest.idForm);

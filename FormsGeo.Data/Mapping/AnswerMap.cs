@@ -15,7 +15,7 @@ namespace FormsGeo.Data.Mapping
         {
             builder.ToTable("Answer");
 
-            builder.HasKey(e => e.answerId);
+            builder.HasKey(a => new { a.FormId, a.idParticipante });
 
             builder.Property(e => e.answer).IsRequired();
             builder.Property(e => e.geolocation).IsRequired();

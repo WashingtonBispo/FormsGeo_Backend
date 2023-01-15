@@ -29,10 +29,12 @@ namespace FormsGeo.Data.Context
             modelBuilder.Entity<UserEntity>(new UserMap().Configure);
             modelBuilder.Entity<FormEntity>(new FormMap().Configure);
             modelBuilder.Entity<AnswerEntity>(new AnswerMap().Configure);
+            modelBuilder.Entity<LocalEntity>(new LocalMap().Configure);
         }
 
         public DbSet<UserEntity> User { get; set; }
         public DbSet<FormEntity> Form { get; set; }
         public DbSet<AnswerEntity> Answer { get; set; }
+        public DbSet<LocalEntity> Local { get; set; }
     }
 }
