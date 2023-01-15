@@ -35,7 +35,8 @@ namespace FormsGeo.Service.Local.Handle
                         form = form,
                         radius = geolocation.radius,
                         longitude = geolocation.longitude,
-                        latitude = geolocation.latitude
+                        latitude = geolocation.latitude,
+                        idLocal = Guid.NewGuid().ToString()
                     };
                     _context.Local.Add(Local);
                 }
