@@ -20,6 +20,8 @@ namespace FormsGeo.Data.Mapping
             builder.Property(e => e.questions).IsRequired();
             builder.Property(e => e.name).IsRequired();
 
+            builder.Property(e => e.geolocations).IsRequired();
+
             builder.Property(e => e.linkConsent).IsRequired();
             builder.Property(e => e.description).IsRequired();
 

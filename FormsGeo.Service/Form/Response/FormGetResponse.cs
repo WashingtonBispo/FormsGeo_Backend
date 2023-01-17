@@ -24,7 +24,7 @@ namespace FormsGeo.Service.Form.Response
             gatherPassage = form.gatherPassage;
             icon = form.icon;
             status = form.status;
-
+            geolocations = form.geolocations;
             author = form.Users.FirstOrDefault().Email;
         }
 
@@ -39,6 +39,7 @@ namespace FormsGeo.Service.Form.Response
         public bool gatherEnd { get; set; }
         public bool gatherPassage { get; set; }
         public string icon { get; set; }
+        public string geolocations { get; set; }
         public string? author { get; set; }
         public EnFormStatus status { get; set; }
 

@@ -11,6 +11,9 @@
     <Compile Remove="Migrations\20221109132702_AddFormTable.Designer.cs" />
     <Compile Remove="Migrations\20221109141105_FormMigration.cs" />
     <Compile Remove="Migrations\20221109141105_FormMigration.Designer.cs" />
+    <Compile Remove="Migrations\20230110151603_InitprojectMigration.cs" />
+    <Compile Remove="Migrations\20230110151603_InitprojectMigration.Designer.cs" />
+    <Compile Remove="Migrations\DataContextModelSnapshot.cs" />
   </ItemGroup>
 
   <ItemGroup>

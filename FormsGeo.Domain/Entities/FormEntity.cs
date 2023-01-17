@@ -10,6 +10,7 @@ namespace FormsGeo.Domain.Entities
         public int? numberQuestions { get; set; }
         public string linkConsent { get; set; }
         public string description { get; set; }
+        public string geolocations { get; set; }
         public string finalMessage { get; set; }
         public DateTime createdAt { get; set; }
         public DateTime? updatedAt { get; set; }
@@ -22,6 +23,5 @@ namespace FormsGeo.Domain.Entities
         public ICollection<UserEntity> Users { get; set; }
         public ICollection<AnswerEntity> Answers { get; set; }
 
-        public ICollection<LocalEntity> Locals { get; set; }
     }
 }

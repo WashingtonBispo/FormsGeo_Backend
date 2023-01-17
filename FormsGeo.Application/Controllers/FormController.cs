@@ -62,6 +62,22 @@ namespace FormsGeo.Application.Controllers
             return await FormPutHandle.Handle();
         }
 
+        [HttpPut("geolocation")]
+        [AllowAnonymous]
+        public async Task<IActionResult> Put([FromBody] FormGeolocationsPutRequest request)
+        {
+            var FormPutHandle = new FormGeolocationsPutHandle(request, _context, _configuration);
+            return await FormPutHandle.Handle();
+        }
+
+        [HttpPut("newGeolocation")]
+        [AllowAnonymous]
+        public async Task<IActionResult> Put([FromBody] FormNewGeoPutRequest request)
+        {
+            var FormPutHandle = new FormNewGeoPuthandle(request, _context, _configuration);
+            return await FormPutHandle.Handle();
+        }
+
         [HttpDelete]
         [AllowAnonymous]
         public async Task<IActionResult> Delete([FromQuery] FormDeleteRequest request)
