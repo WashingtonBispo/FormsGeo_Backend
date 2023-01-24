@@ -44,7 +44,8 @@ namespace FormsGeo.Service.Form.Handle
                     gatherEnd = form.gatherEnd,
                     gatherPassage = form.gatherPassage,
                     icon = form.icon,
-                    status = EnFormStatus.Preview
+                    status = EnFormStatus.Preview,
+                    geolocations = form.geolocations
                 };
 
                 formDuplicate.Users = new List<UserEntity>();
