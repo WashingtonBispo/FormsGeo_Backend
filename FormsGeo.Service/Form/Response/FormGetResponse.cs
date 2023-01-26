@@ -26,6 +26,9 @@ namespace FormsGeo.Service.Form.Response
             status = form.status;
             geolocations = form.geolocations;
             author = form.Users.FirstOrDefault().Email;
+            isArchiverd = form.isArchiverd;
+            if(form.Answers != null)
+                numberAnswers = form.Answers.Count;
         }
 
         public string idForm { get; set; }
@@ -42,6 +45,9 @@ namespace FormsGeo.Service.Form.Response
         public string geolocations { get; set; }
         public string? author { get; set; }
         public EnFormStatus status { get; set; }
+        public Boolean isArchiverd { get; set; }
+
+        public int numberAnswers { get; set; }
 
     }
 }

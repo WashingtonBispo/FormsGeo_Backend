@@ -37,7 +37,8 @@ namespace FormsGeo.Service.Form.Handle
                 gatherPassage = _FormPostRequest.gatherPassage,
                 icon = _FormPostRequest.icon,
                 status = EnFormStatus.Preview,
-                geolocations = "{'onPass':'', 'onGather':[]}"
+                geolocations = "[]",
+                isArchiverd = false
             };
 
             Form.Users = new List<UserEntity>();

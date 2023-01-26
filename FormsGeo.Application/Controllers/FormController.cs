@@ -62,6 +62,14 @@ namespace FormsGeo.Application.Controllers
             return await FormPutHandle.Handle();
         }
 
+        [HttpPut("archive")]
+        [AllowAnonymous]
+        public async Task<IActionResult> Put([FromBody] FormPutArchiveRequest request)
+        {
+            var FormPutHandle = new FormPutArchiveHandle(request, _context, _configuration);
+            return await FormPutHandle.Handle();
+        }
+
         [HttpPut("geolocation")]
         [AllowAnonymous]
         public async Task<IActionResult> Put([FromBody] FormGeolocationsPutRequest request)

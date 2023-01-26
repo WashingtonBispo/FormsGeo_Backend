@@ -25,7 +25,7 @@ namespace FormsGeo.Service.Form.Handle
         {
             try
             {
-               FormEntity form = _context.Form.Include(f => f.Users).FirstOrDefault(x => x.idForm == _FormGetRequest.formId);
+                FormEntity form = _context.Form.Include(f => f.Answers).Include(f => f.Users).FirstOrDefault(x => x.idForm == _FormGetRequest.formId);
 
                return new FormGetResponse(form);
             }

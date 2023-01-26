@@ -98,6 +98,9 @@ namespace FormsGeo.Data.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<bool>("isArchiverd")
+                        .HasColumnType("boolean");
+
                     b.Property<string>("linkConsent")
                         .IsRequired()
                         .HasColumnType("text");

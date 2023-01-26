@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FormsGeo.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230115123433_InitProject")]
+    [Migration("20230126114713_InitProject")]
     partial class InitProject
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -99,6 +99,9 @@ namespace FormsGeo.Data.Migrations
                     b.Property<string>("icon")
                         .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<bool>("isArchiverd")
+                        .HasColumnType("boolean");
 
                     b.Property<string>("linkConsent")
                         .IsRequired()

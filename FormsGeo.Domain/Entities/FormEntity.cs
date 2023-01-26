@@ -20,6 +20,8 @@ namespace FormsGeo.Domain.Entities
         public string icon { get; set; }
         public EnFormStatus status { get; set; }
 
+        public bool isArchiverd { get; set; }
+
         public ICollection<UserEntity> Users { get; set; }
         public ICollection<AnswerEntity> Answers { get; set; }
 
